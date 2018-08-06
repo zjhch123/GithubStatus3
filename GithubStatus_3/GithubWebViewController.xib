@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14113" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14113"/>
+        <plugIn identifier="com.apple.WebKit2IBPlugin" version="14113"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+        <capability name="stacking Non-gravity area distributions on NSStackView" minToolsVersion="7.0" minSystemVersion="10.11"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="GithubWebViewController" customModule="GithubStatus_3" customModuleProvider="target">
+            <connections>
+                <outlet property="defaultStartUpSettingInput" destination="oI8-iO-lNI" id="JDo-df-uCE"/>
+                <outlet property="defaultUserSettingInput" destination="Qcw-gC-cUs" id="4Pd-sH-3iZ"/>
+                <outlet property="settingsButton" destination="84F-nf-OIs" id="moL-I9-8xd"/>
+                <outlet property="settingsWindow" destination="oGU-lu-XKI" id="j36-Xc-jKa"/>
+                <outlet property="view" destination="Hz6-mo-xeY" id="Scd-vQ-4hM"/>
+                <outlet property="webView" destination="FeT-gp-dqS" id="IQv-z6-riP"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView wantsLayer="YES" id="Hz6-mo-xeY" customClass="MyPopoverView" customModule="GithubStatus_3" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="400" height="290"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <wkWebView wantsLayer="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FeT-gp-dqS">
+                    <rect key="frame" x="0.0" y="30" width="400" height="260"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="400" id="9Al-2N-Sxk"/>
+                        <constraint firstAttribute="height" constant="260" id="qrj-SW-zue"/>
+                    </constraints>
+                    <wkWebViewConfiguration key="configuration">
+                        <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                        <wkPreferences key="preferences"/>
+                    </wkWebViewConfiguration>
+                </wkWebView>
+                <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VkI-hg-Fee">
+                    <rect key="frame" x="296" y="0.0" width="88" height="30"/>
+                    <subviews>
+                        <button translatesAutoresizingMaskIntoConstraints="NO" id="U7J-dm-brL">
+                            <rect key="frame" x="0.0" y="0.0" width="24" height="30"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="24" id="LSI-aP-gkE"/>
+                                <constraint firstAttribute="height" constant="30" id="bSM-7H-gU9"/>
+                            </constraints>
+                            <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="refresh" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="SCb-Ar-KKB">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                            <connections>
+                                <action selector="refreshBtnClickHandler:" target="-2" id="5TB-NY-vvF"/>
+                            </connections>
+                        </button>
+                        <button translatesAutoresizingMaskIntoConstraints="NO" id="84F-nf-OIs">
+                            <rect key="frame" x="32" y="0.0" width="24" height="30"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="30" id="ju3-ow-mXO"/>
+                                <constraint firstAttribute="width" constant="24" id="z98-F7-4Jh"/>
+                            </constraints>
+                            <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="setting" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="VfB-hL-gKy">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                            <connections>
+                                <action selector="settingsButtonClickHandler:" target="-2" id="yeJ-we-dyp"/>
+                            </connections>
+                        </button>
+                        <button translatesAutoresizingMaskIntoConstraints="NO" id="Fin-8t-Adw">
+                            <rect key="frame" x="64" y="0.0" width="24" height="30"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="30" id="Io1-52-YO5"/>
+                                <constraint firstAttribute="width" constant="24" id="rEv-fT-5bD"/>
+                            </constraints>
+                            <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="logout" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="ke2-DZ-vFk">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                            <connections>
+                                <action selector="exitButtonClickHandler:" target="-2" id="sB9-zB-3Ad"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <visibilityPriorities>
+                        <integer value="1000"/>
+                        <real value="1000"/>
+                        <integer value="1000"/>
+                    </visibilityPriorities>
+                    <customSpacing>
+                        <real value="3.4028234663852886e+38"/>
+                        <real value="3.4028234663852886e+38"/>
+                        <real value="3.4028234663852886e+38"/>
+                    </customSpacing>
+                </stackView>
+                <button translatesAutoresizingMaskIntoConstraints="NO" id="nOV-Vi-vgB">
+                    <rect key="frame" x="20" y="0.0" width="24" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="a3A-9l-9Q8"/>
+                        <constraint firstAttribute="width" constant="24" id="aye-Os-txg"/>
+                    </constraints>
+                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="github" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="GNX-DO-ALb">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="homeBtnClickHandler:" target="-2" id="xgz-QF-raZ"/>
+                    </connections>
+                </button>
+            </subviews>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="VkI-hg-Fee" secondAttribute="trailing" constant="16" id="6cE-3C-M14"/>
+                <constraint firstAttribute="bottom" secondItem="FeT-gp-dqS" secondAttribute="bottom" constant="30" id="Egc-sH-Tge"/>
+                <constraint firstAttribute="trailing" secondItem="FeT-gp-dqS" secondAttribute="trailing" id="FoD-Ac-Y4e"/>
+                <constraint firstItem="FeT-gp-dqS" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="IQE-mU-Bj0"/>
+                <constraint firstItem="FeT-gp-dqS" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" id="dwf-KT-sPO"/>
+                <constraint firstItem="nOV-Vi-vgB" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="20" id="fJU-di-s4I"/>
+                <constraint firstAttribute="bottom" secondItem="nOV-Vi-vgB" secondAttribute="bottom" id="fdV-2B-zE3"/>
+                <constraint firstItem="VkI-hg-Fee" firstAttribute="leading" secondItem="nOV-Vi-vgB" secondAttribute="trailing" constant="252" id="mKg-zt-Ynb"/>
+                <constraint firstAttribute="bottom" secondItem="VkI-hg-Fee" secondAttribute="bottom" id="ucq-Z6-5Z7"/>
+            </constraints>
+            <shadow key="shadow">
+                <color key="color" red="0.96078431372549022" green="0.96078431372549022" blue="0.96078431372549022" alpha="1" colorSpace="calibratedRGB"/>
+            </shadow>
+            <point key="canvasLocation" x="-118" y="-217"/>
+        </customView>
+        <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="oGU-lu-XKI">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
+            <windowPositionMask key="initialPositionMask" topStrut="YES"/>
+            <rect key="contentRect" x="681" y="561" width="315" height="110"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1028"/>
+            <value key="minSize" type="size" width="315" height="120"/>
+            <value key="maxSize" type="size" width="315" height="120"/>
+            <value key="minFullScreenContentSize" type="size" width="315" height="120"/>
+            <value key="maxFullScreenContentSize" type="size" width="315" height="120"/>
+            <view key="contentView" id="yKj-Pp-AoS">
+                <rect key="frame" x="0.0" y="0.0" width="315" height="110"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="WUc-Jp-edr">
+                        <rect key="frame" x="18" y="73" width="70" height="17"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Username:" id="ryf-1I-rt8">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <textField verticalHuggingPriority="750" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qcw-gC-cUs">
+                        <rect key="frame" x="94" y="71" width="201" height="22"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="VVV-5P-zMh">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="oI8-iO-lNI">
+                        <rect key="frame" x="18" y="41" width="102" height="18"/>
+                        <buttonCell key="cell" type="check" title="开机自动启动" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="UPh-oc-Kqo">
+                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                            <font key="font" usesAppearanceFont="YES"/>
+                        </buttonCell>
+                    </button>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="qfB-Ts-2VD">
+                        <rect key="frame" x="124" y="5" width="67" height="32"/>
+                        <buttonCell key="cell" type="push" title="确定" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="799-1i-GGE">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" usesAppearanceFont="YES"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="settingSuccessButtonClickHandler:" target="-2" id="xlk-gP-GuA"/>
+                        </connections>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="Qcw-gC-cUs" firstAttribute="leading" secondItem="WUc-Jp-edr" secondAttribute="trailing" constant="8" id="MiA-fb-IyM"/>
+                    <constraint firstItem="WUc-Jp-edr" firstAttribute="leading" secondItem="yKj-Pp-AoS" secondAttribute="leading" constant="20" id="P9s-9l-7b5"/>
+                    <constraint firstItem="qfB-Ts-2VD" firstAttribute="centerX" secondItem="yKj-Pp-AoS" secondAttribute="centerX" id="bbO-c6-V7n"/>
+                    <constraint firstItem="WUc-Jp-edr" firstAttribute="top" secondItem="yKj-Pp-AoS" secondAttribute="top" constant="20" id="gwz-fg-N5o"/>
+                    <constraint firstItem="oI8-iO-lNI" firstAttribute="leading" secondItem="yKj-Pp-AoS" secondAttribute="leading" constant="20" id="obZ-H8-aFm"/>
+                    <constraint firstAttribute="bottom" secondItem="qfB-Ts-2VD" secondAttribute="bottom" constant="12" id="sWh-4F-9qL"/>
+                    <constraint firstAttribute="trailing" secondItem="Qcw-gC-cUs" secondAttribute="trailing" constant="20" id="uIL-cc-iPv"/>
+                    <constraint firstItem="Qcw-gC-cUs" firstAttribute="centerY" secondItem="WUc-Jp-edr" secondAttribute="centerY" id="uKV-9a-bL2"/>
+                    <constraint firstItem="oI8-iO-lNI" firstAttribute="top" secondItem="WUc-Jp-edr" secondAttribute="bottom" constant="16" id="uL4-W0-3k2"/>
+                </constraints>
+            </view>
+            <point key="canvasLocation" x="-377" y="59"/>
+        </window>
+    </objects>
+    <resources>
+        <image name="github" width="150" height="150"/>
+        <image name="logout" width="150" height="150"/>
+        <image name="refresh" width="180" height="180"/>
+        <image name="setting" width="150" height="150"/>
+    </resources>
+</document>

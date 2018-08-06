@@ -1,0 +1,12 @@
+{
+  "presets": [
+    "env"
+  ],
+  "plugins": [
+    "add-module-exports",
+    "transform-runtime",
+    "transform-decorators-legacy",
+    "transform-class-properties"
+  ],
+  "comments": false
+}
