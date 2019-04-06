@@ -16,10 +16,10 @@
 		371E8CFB2116DD56000E7281 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 371E8CF92116DD56000E7281 /* MainMenu.xib */; };
 		371E8D052116DF2E000E7281 /* GithubWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371E8D032116DF2E000E7281 /* GithubWebViewController.swift */; };
 		371E8D062116DF2E000E7281 /* GithubWebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 371E8D042116DF2E000E7281 /* GithubWebViewController.xib */; };
+		374FB1282258E9DF00BF4E12 /* static in Resources */ = {isa = PBXBuildFile; fileRef = 374FB1262258E9DF00BF4E12 /* static */; };
+		374FB1292258E9DF00BF4E12 /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = 374FB1272258E9DF00BF4E12 /* index.html */; };
 		379D4E092117E80A00C02FEB /* GithubRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379D4E082117E80A00C02FEB /* GithubRequests.swift */; };
 		37D07E152117DF1C00CED300 /* EventMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D07E142117DF1C00CED300 /* EventMonitor.swift */; };
-		37D07E182117E0AB00CED300 /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = 37D07E162117E0AB00CED300 /* index.html */; };
-		37D07E192117E0AB00CED300 /* static in Resources */ = {isa = PBXBuildFile; fileRef = 37D07E172117E0AB00CED300 /* static */; };
 		37E63FA82116EA2E001CA2FB /* MyPopoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E63FA72116EA2E001CA2FB /* MyPopoverView.swift */; };
 		37E63FAE21170A06001CA2FB /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E63FAD21170A06001CA2FB /* Utils.swift */; };
 		3DFDE1B0E87DF7A8B84E4714 /* Pods_GithubStatus_3.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73E1E98B7D80C2763AFBD112 /* Pods_GithubStatus_3.framework */; };
@@ -53,10 +53,10 @@
 		371E8CFD2116DD56000E7281 /* GithubStatus_3.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GithubStatus_3.entitlements; sourceTree = "<group>"; };
 		371E8D032116DF2E000E7281 /* GithubWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubWebViewController.swift; sourceTree = "<group>"; };
 		371E8D042116DF2E000E7281 /* GithubWebViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GithubWebViewController.xib; sourceTree = "<group>"; };
+		374FB1262258E9DF00BF4E12 /* static */ = {isa = PBXFileReference; lastKnownFileType = folder; name = static; path = webview/build/static; sourceTree = SOURCE_ROOT; };
+		374FB1272258E9DF00BF4E12 /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = index.html; path = webview/build/index.html; sourceTree = SOURCE_ROOT; };
 		379D4E082117E80A00C02FEB /* GithubRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubRequests.swift; sourceTree = "<group>"; };
 		37D07E142117DF1C00CED300 /* EventMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventMonitor.swift; sourceTree = "<group>"; };
-		37D07E162117E0AB00CED300 /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = index.html; path = webview/build/index.html; sourceTree = SOURCE_ROOT; };
-		37D07E172117E0AB00CED300 /* static */ = {isa = PBXFileReference; lastKnownFileType = folder; name = static; path = webview/build/static; sourceTree = SOURCE_ROOT; };
 		37E63FA72116EA2E001CA2FB /* MyPopoverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPopoverView.swift; sourceTree = "<group>"; };
 		37E63FAD21170A06001CA2FB /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		73E1E98B7D80C2763AFBD112 /* Pods_GithubStatus_3.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GithubStatus_3.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -143,8 +143,8 @@
 		371E8D0B2116E050000E7281 /* HTML */ = {
 			isa = PBXGroup;
 			children = (
-				37D07E162117E0AB00CED300 /* index.html */,
-				37D07E172117E0AB00CED300 /* static */,
+				374FB1272258E9DF00BF4E12 /* index.html */,
+				374FB1262258E9DF00BF4E12 /* static */,
 			);
 			path = HTML;
 			sourceTree = "<group>";
@@ -269,10 +269,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				37D07E192117E0AB00CED300 /* static in Resources */,
+				374FB1292258E9DF00BF4E12 /* index.html in Resources */,
 				371E8D062116DF2E000E7281 /* GithubWebViewController.xib in Resources */,
-				37D07E182117E0AB00CED300 /* index.html in Resources */,
 				371E8CF82116DD56000E7281 /* Assets.xcassets in Resources */,
+				374FB1282258E9DF00BF4E12 /* static in Resources */,
 				371E8CFB2116DD56000E7281 /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
