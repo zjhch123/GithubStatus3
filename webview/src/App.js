@@ -3,11 +3,12 @@ import '@css/style.scss';
 import cheerio from 'cheerio'
 import event from '@js/eventemit'
 
-// import testData from '@assets/testData.html'
-
-// 这是为了更新html之后页面能自动刷新而写的。不要删
 if (process.env.NODE_ENV !== 'production') {
   require('./index.html')
+  const data = require('@assets/testData.html')
+  setTimeout(() => {
+    event.emit('getData', data)
+  }, 100)
 }
 
 function render({headerUrl, username, nickname, profileBio, lastUpdate, todayCommit, todayColor, dailyGraph}) {
@@ -54,5 +55,3 @@ event.on('getData', (data) => {
 document.body.addEventListener('contextmenu', (e) => {
   e.preventDefault()
 })
-
-// event.emit('getData', testData)
