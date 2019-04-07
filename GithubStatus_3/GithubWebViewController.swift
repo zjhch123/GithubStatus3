@@ -11,34 +11,11 @@ import ServiceManagement
 import WebKit
 import SwiftHTTP
 
-class GithubWebViewController: NSViewController, WKNavigationDelegate, GithubRequestDelegate {
+class GithubWebViewController: NSViewController, WKNavigationDelegate, GithubRequestDelegate, WKScriptMessageHandler {
     
     @IBOutlet weak var webView: WKWebView!
-    @IBOutlet var settingsWindow: NSWindow!
-    @IBOutlet weak var defaultUserSettingInput: NSTextField!
-    @IBOutlet weak var defaultStartUpSettingInput: NSButton!
-    @IBOutlet weak var settingsButton: NSButton!
     
     var githubRequest: GithubRequests!
-    
-    let settingsPopover = NSPopover()
-    
-    func startupAppWhenLogin() {
-        let launcherAppIdentifier = "xyz.hduzplus.MainAppHelper"
-        
-        SMLoginItemSetEnabled(launcherAppIdentifier as CFString, Utils.getDefaultStartup() == 1)
-        
-        var startedAtLogin = false
-        for app in NSWorkspace.shared.runningApplications {
-            if app.bundleIdentifier == launcherAppIdentifier {
-                startedAtLogin = true
-            }
-        }
-        
-        if startedAtLogin {
-            DistributedNotificationCenter.default.post(name: NSNotification.Name(rawValue: "killhelper"), object: Bundle.main.bundleIdentifier!)
-        }
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,8 +23,14 @@ class GithubWebViewController: NSViewController, WKNavigationDelegate, GithubReq
         let path = Bundle.main.path(forResource: "index", ofType: "html")
         let url = URL(fileURLWithPath:path!)
         let request = URLRequest(url:url)
+        self.webView.configuration.userContentController = WKUserContentController()
+        
+        self.webView.configuration.userContentController.add(WeakScriptMessageDelegate(self), name: "setUser")
+        self.webView.configuration.userContentController.add(WeakScriptMessageDelegate(self), name: "openURL")
+        
         self.webView.load(request)
         self.webView.navigationDelegate = self
+        
         self.githubRequest.request()
     }
     
@@ -57,42 +40,45 @@ class GithubWebViewController: NSViewController, WKNavigationDelegate, GithubReq
     
     @IBAction func homeBtnClickHandler(_ sender: Any) {
         let user = Utils.getUser();
-        if let url = URL(string: "https://github.com/" + user), NSWorkspace.shared.open(url) {
-            // TODO
-        }
+        self.openURL(url: "https://github.com/" + user)
     }
+    
     @IBAction func refreshBtnClickHandler(_ sender: Any) {
         self.githubRequest.request()
     }
+    
     @IBAction func exitButtonClickHandler(_ sender: Any) {
         NSApplication.shared.terminate(self)
     }
+    
     @IBAction func settingsButtonClickHandler(_ sender: Any) {
-        settingsWindow.orderFront(nil)
-        settingsWindow.makeKeyAndOrderFront(nil)
-        defaultUserSettingInput.stringValue = Utils.getUser()
-        defaultStartUpSettingInput.state = NSControl.StateValue.init(Utils.getDefaultStartup())
+        self.webView.evaluateJavaScript("window.EventEmitter.emit('setting')")
     }
     
-    @IBAction func settingSuccessButtonClickHandler(_ sender: Any) {
-        let newUser = defaultUserSettingInput.stringValue
-        let newStartup = defaultStartUpSettingInput.state.rawValue == 1
-        Utils.setUser(username: newUser)
-        Utils.setDefaultStartup(flag: newStartup)
-        self.githubRequest.request()
-        self.startupAppWhenLogin()
-        self.settingsWindow.performClose(nil)
+    func openURL(url: String) {
+        let opened: URL! = URL(string: url)
+        NSWorkspace.shared.open(opened)
     }
     
     func requestDidFinished(username: String, html: String, count: String) {
         DispatchQueue.main.sync {
-            self.doScript(param: html)
+            let fixedParam = html.replacingOccurrences(of: "`", with: "")
+            self.webView.evaluateJavaScript("window.EventEmitter.emit('render', `\(fixedParam)`)")
         }
     }
     
-    func doScript(param: String) {
-        let fixedParam = param.replacingOccurrences(of: "`", with: "")
-        self.webView.evaluateJavaScript("window.EventEmitter.emit('getData', `\(fixedParam)`)")
+    func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
+        let name = message.name
+        let body = message.body as! String
+        switch name {
+        case "setUser":
+            Utils.setUser(username: body)
+            self.githubRequest.request()
+            break
+        case "openURL":
+            self.openURL(url: body)
+            break
+        default: break
+        }
     }
-
 }
