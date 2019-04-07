@@ -1,0 +1,53 @@
+.g-setting {
+  opacity: 0;
+  background: rgba(0,0,0,.6);
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+  transform: translateZ(1px);
+
+  pointer-events: none;
+  transition: all .4s;
+
+  .m-user {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate3d(-50%, -50%, 0);
+    .u-username {
+      -webkit-appearance: none;
+      display: block;
+
+      margin: auto;
+
+      width: 280px;
+      height: 35px;
+      line-height: 35px;
+      font-size: 20px;
+
+      border-radius: 4px;
+      border-color: transparent;
+
+      padding-left: 8px;
+      box-sizing: border-box;
+    }
+    .u-submit {
+      display: block;
+      -webkit-appearance: none;
+
+      margin: 12px auto 0;
+      font-size: 14px;
+      line-height: 1.499;
+      height: 32px;
+      padding: 0 18px;
+      border-radius: 4px;
+      user-select: none;
+      box-sizing: border-box;
+      background: #B2CE7D;
+      color: white;
+    }
+  }
+}
