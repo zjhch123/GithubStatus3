@@ -7,10 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		370B283C21185764001BDD1F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370B283B21185764001BDD1F /* AppDelegate.swift */; };
-		370B283E21185765001BDD1F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 370B283D21185765001BDD1F /* Assets.xcassets */; };
-		370B284121185765001BDD1F /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 370B283F21185765001BDD1F /* MainMenu.xib */; };
-		370B2848211857E7001BDD1F /* MainAppHelper.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = 370B283921185764001BDD1F /* MainAppHelper.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		371E8CF62116DD55000E7281 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371E8CF52116DD55000E7281 /* AppDelegate.swift */; };
 		371E8CF82116DD56000E7281 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 371E8CF72116DD56000E7281 /* Assets.xcassets */; };
 		371E8CFB2116DD56000E7281 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 371E8CF92116DD56000E7281 /* MainMenu.xib */; };
@@ -19,32 +15,14 @@
 		374FB1282258E9DF00BF4E12 /* static in Resources */ = {isa = PBXBuildFile; fileRef = 374FB1262258E9DF00BF4E12 /* static */; };
 		374FB1292258E9DF00BF4E12 /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = 374FB1272258E9DF00BF4E12 /* index.html */; };
 		379D4E092117E80A00C02FEB /* GithubRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379D4E082117E80A00C02FEB /* GithubRequests.swift */; };
+		37B70A0F2259364500FDDE97 /* WeakScriptMessageDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B70A0E2259364500FDDE97 /* WeakScriptMessageDelegate.swift */; };
 		37D07E152117DF1C00CED300 /* EventMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D07E142117DF1C00CED300 /* EventMonitor.swift */; };
 		37E63FA82116EA2E001CA2FB /* MyPopoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E63FA72116EA2E001CA2FB /* MyPopoverView.swift */; };
 		37E63FAE21170A06001CA2FB /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E63FAD21170A06001CA2FB /* Utils.swift */; };
 		3DFDE1B0E87DF7A8B84E4714 /* Pods_GithubStatus_3.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73E1E98B7D80C2763AFBD112 /* Pods_GithubStatus_3.framework */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXCopyFilesBuildPhase section */
-		370B2847211857C0001BDD1F /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = Contents/Library/LoginItems;
-			dstSubfolderSpec = 1;
-			files = (
-				370B2848211857E7001BDD1F /* MainAppHelper.app in CopyFiles */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXFileReference section */
-		370B283921185764001BDD1F /* MainAppHelper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MainAppHelper.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		370B283B21185764001BDD1F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		370B283D21185765001BDD1F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		370B284021185765001BDD1F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
-		370B284221185765001BDD1F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		370B284321185765001BDD1F /* MainAppHelper.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MainAppHelper.entitlements; sourceTree = "<group>"; };
 		371E8CF22116DD55000E7281 /* GithubStatus_3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GithubStatus_3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		371E8CF52116DD55000E7281 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		371E8CF72116DD56000E7281 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -56,6 +34,7 @@
 		374FB1262258E9DF00BF4E12 /* static */ = {isa = PBXFileReference; lastKnownFileType = folder; name = static; path = webview/build/static; sourceTree = SOURCE_ROOT; };
 		374FB1272258E9DF00BF4E12 /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = index.html; path = webview/build/index.html; sourceTree = SOURCE_ROOT; };
 		379D4E082117E80A00C02FEB /* GithubRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubRequests.swift; sourceTree = "<group>"; };
+		37B70A0E2259364500FDDE97 /* WeakScriptMessageDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeakScriptMessageDelegate.swift; sourceTree = "<group>"; };
 		37D07E142117DF1C00CED300 /* EventMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventMonitor.swift; sourceTree = "<group>"; };
 		37E63FA72116EA2E001CA2FB /* MyPopoverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPopoverView.swift; sourceTree = "<group>"; };
 		37E63FAD21170A06001CA2FB /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
@@ -65,13 +44,6 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		370B283621185764001BDD1F /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		371E8CEF2116DD55000E7281 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -91,23 +63,10 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		370B283A21185764001BDD1F /* MainAppHelper */ = {
-			isa = PBXGroup;
-			children = (
-				370B283B21185764001BDD1F /* AppDelegate.swift */,
-				370B283D21185765001BDD1F /* Assets.xcassets */,
-				370B283F21185765001BDD1F /* MainMenu.xib */,
-				370B284221185765001BDD1F /* Info.plist */,
-				370B284321185765001BDD1F /* MainAppHelper.entitlements */,
-			);
-			path = MainAppHelper;
-			sourceTree = "<group>";
-		};
 		371E8CE92116DD55000E7281 = {
 			isa = PBXGroup;
 			children = (
 				371E8CF42116DD55000E7281 /* GithubStatus_3 */,
-				370B283A21185764001BDD1F /* MainAppHelper */,
 				371E8CF32116DD55000E7281 /* Products */,
 				62BB4563906058690EFF4059 /* Pods */,
 				311E9DB3CC1856810305107F /* Frameworks */,
@@ -118,7 +77,6 @@
 			isa = PBXGroup;
 			children = (
 				371E8CF22116DD55000E7281 /* GithubStatus_3.app */,
-				370B283921185764001BDD1F /* MainAppHelper.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -136,6 +94,7 @@
 				371E8D032116DF2E000E7281 /* GithubWebViewController.swift */,
 				371E8D042116DF2E000E7281 /* GithubWebViewController.xib */,
 				37E63FA72116EA2E001CA2FB /* MyPopoverView.swift */,
+				37B70A0E2259364500FDDE97 /* WeakScriptMessageDelegate.swift */,
 			);
 			path = GithubStatus_3;
 			sourceTree = "<group>";
@@ -171,24 +130,6 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		370B283821185764001BDD1F /* MainAppHelper */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 370B284621185765001BDD1F /* Build configuration list for PBXNativeTarget "MainAppHelper" */;
-			buildPhases = (
-				370B283521185764001BDD1F /* Sources */,
-				370B283621185764001BDD1F /* Frameworks */,
-				370B283721185764001BDD1F /* Resources */,
-				370B2847211857C0001BDD1F /* CopyFiles */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = MainAppHelper;
-			productName = MainAppHelper;
-			productReference = 370B283921185764001BDD1F /* MainAppHelper.app */;
-			productType = "com.apple.product-type.application";
-		};
 		371E8CF12116DD55000E7281 /* GithubStatus_3 */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 371E8D002116DD56000E7281 /* Build configuration list for PBXNativeTarget "GithubStatus_3" */;
@@ -218,14 +159,6 @@
 				LastUpgradeCheck = 0940;
 				ORGANIZATIONNAME = "张佳皓";
 				TargetAttributes = {
-					370B283821185764001BDD1F = {
-						CreatedOnToolsVersion = 9.4.1;
-						SystemCapabilities = {
-							com.apple.Sandbox = {
-								enabled = 1;
-							};
-						};
-					};
 					371E8CF12116DD55000E7281 = {
 						CreatedOnToolsVersion = 9.4.1;
 						SystemCapabilities = {
@@ -250,21 +183,11 @@
 			projectRoot = "";
 			targets = (
 				371E8CF12116DD55000E7281 /* GithubStatus_3 */,
-				370B283821185764001BDD1F /* MainAppHelper */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		370B283721185764001BDD1F /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				370B283E21185765001BDD1F /* Assets.xcassets in Resources */,
-				370B284121185765001BDD1F /* MainMenu.xib in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		371E8CF02116DD55000E7281 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -321,20 +244,13 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		370B283521185764001BDD1F /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				370B283C21185764001BDD1F /* AppDelegate.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		371E8CEE2116DD55000E7281 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				37E63FA82116EA2E001CA2FB /* MyPopoverView.swift in Sources */,
 				37D07E152117DF1C00CED300 /* EventMonitor.swift in Sources */,
+				37B70A0F2259364500FDDE97 /* WeakScriptMessageDelegate.swift in Sources */,
 				371E8D052116DF2E000E7281 /* GithubWebViewController.swift in Sources */,
 				371E8CF62116DD55000E7281 /* AppDelegate.swift in Sources */,
 				37E63FAE21170A06001CA2FB /* Utils.swift in Sources */,
@@ -345,14 +261,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		370B283F21185765001BDD1F /* MainMenu.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				370B284021185765001BDD1F /* Base */,
-			);
-			name = MainMenu.xib;
-			sourceTree = "<group>";
-		};
 		371E8CF92116DD56000E7281 /* MainMenu.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -364,46 +272,6 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		370B284421185765001BDD1F /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = MainAppHelper/MainAppHelper.entitlements;
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = RE4CMN34PG;
-				INFOPLIST_FILE = MainAppHelper/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = xyz.hduzplus.MainAppHelper;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.0;
-			};
-			name = Debug;
-		};
-		370B284521185765001BDD1F /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = MainAppHelper/MainAppHelper.entitlements;
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = RE4CMN34PG;
-				INFOPLIST_FILE = MainAppHelper/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = xyz.hduzplus.MainAppHelper;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.0;
-			};
-			name = Release;
-		};
 		371E8CFE2116DD56000E7281 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -564,15 +432,6 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		370B284621185765001BDD1F /* Build configuration list for PBXNativeTarget "MainAppHelper" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				370B284421185765001BDD1F /* Debug */,
-				370B284521185765001BDD1F /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		371E8CED2116DD55000E7281 /* Build configuration list for PBXProject "GithubStatus_3" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

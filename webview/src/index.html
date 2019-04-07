@@ -4,16 +4,17 @@
     <meta charset="utf-8">
     <title>Github Status - power by zjhch123</title>
 </head>
-<body>
-    <div class="g-container">
+<body class="">
+    <div class="g-main">
         <div class="m-grid">
             <div class="m-info">
                 <div class="u-header">
-                    <img class="header J_userHeader" src="./assets/images/logo.png">
+                    <img class="header J_userHeader J_openURL" src="./assets/images/logo.png">
+                    <span class="focus J_focus"></span>
                 </div>
                 <div class="u-info">
                     <div>
-                        <span class="nickname J_nickname">--</span>
+                        <span class="nickname J_nickname J_openURL">--</span>
                         <span class="username J_username">--</span>
                     </div>
                     <div class="sign J_profile_bio">Loading...</div>
@@ -37,6 +38,13 @@
                 </div>
             </div>
         </div>
+    </div>
+    <div class="g-setting">
+        <form class="m-user J_setting">
+            <input type="input" class="u-username J_username_input" name="username" placeholder="Github Username">
+            <input type="submit" class="u-btn u-submit" value="Sure">
+            <input type="button" class="u-btn u-cancel J_cancel" value="Cancel">
+        </form>
     </div>
 </body>
 </html>

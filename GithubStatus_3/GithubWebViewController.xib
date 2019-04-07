@@ -9,10 +9,6 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="GithubWebViewController" customModule="GithubStatus_3" customModuleProvider="target">
             <connections>
-                <outlet property="defaultStartUpSettingInput" destination="oI8-iO-lNI" id="JDo-df-uCE"/>
-                <outlet property="defaultUserSettingInput" destination="Qcw-gC-cUs" id="4Pd-sH-3iZ"/>
-                <outlet property="settingsButton" destination="84F-nf-OIs" id="moL-I9-8xd"/>
-                <outlet property="settingsWindow" destination="oGU-lu-XKI" id="j36-Xc-jKa"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="Scd-vQ-4hM"/>
                 <outlet property="webView" destination="FeT-gp-dqS" id="IQv-z6-riP"/>
             </connections>
@@ -121,66 +117,6 @@
             </shadow>
             <point key="canvasLocation" x="-118" y="-217"/>
         </customView>
-        <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="oGU-lu-XKI">
-            <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
-            <rect key="contentRect" x="681" y="561" width="315" height="120"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
-            <value key="minSize" type="size" width="315" height="120"/>
-            <value key="maxSize" type="size" width="315" height="120"/>
-            <value key="minFullScreenContentSize" type="size" width="315" height="120"/>
-            <value key="maxFullScreenContentSize" type="size" width="315" height="120"/>
-            <view key="contentView" id="yKj-Pp-AoS">
-                <rect key="frame" x="0.0" y="0.0" width="315" height="120"/>
-                <autoresizingMask key="autoresizingMask"/>
-                <subviews>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="WUc-Jp-edr">
-                        <rect key="frame" x="18" y="83" width="70" height="17"/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Username:" id="ryf-1I-rt8">
-                            <font key="font" metaFont="system"/>
-                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                    </textField>
-                    <textField verticalHuggingPriority="750" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qcw-gC-cUs">
-                        <rect key="frame" x="94" y="81" width="201" height="22"/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="VVV-5P-zMh">
-                            <font key="font" metaFont="system"/>
-                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                    </textField>
-                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="oI8-iO-lNI">
-                        <rect key="frame" x="18" y="51" width="102" height="18"/>
-                        <buttonCell key="cell" type="check" title="开机自动启动" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="UPh-oc-Kqo">
-                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                            <font key="font" usesAppearanceFont="YES"/>
-                        </buttonCell>
-                    </button>
-                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="qfB-Ts-2VD">
-                        <rect key="frame" x="124" y="5" width="67" height="32"/>
-                        <buttonCell key="cell" type="push" title="确定" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="799-1i-GGE">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" usesAppearanceFont="YES"/>
-                        </buttonCell>
-                        <connections>
-                            <action selector="settingSuccessButtonClickHandler:" target="-2" id="xlk-gP-GuA"/>
-                        </connections>
-                    </button>
-                </subviews>
-                <constraints>
-                    <constraint firstItem="Qcw-gC-cUs" firstAttribute="leading" secondItem="WUc-Jp-edr" secondAttribute="trailing" constant="8" id="MiA-fb-IyM"/>
-                    <constraint firstItem="WUc-Jp-edr" firstAttribute="leading" secondItem="yKj-Pp-AoS" secondAttribute="leading" constant="20" id="P9s-9l-7b5"/>
-                    <constraint firstItem="qfB-Ts-2VD" firstAttribute="centerX" secondItem="yKj-Pp-AoS" secondAttribute="centerX" id="bbO-c6-V7n"/>
-                    <constraint firstItem="WUc-Jp-edr" firstAttribute="top" secondItem="yKj-Pp-AoS" secondAttribute="top" constant="20" id="gwz-fg-N5o"/>
-                    <constraint firstItem="oI8-iO-lNI" firstAttribute="leading" secondItem="yKj-Pp-AoS" secondAttribute="leading" constant="20" id="obZ-H8-aFm"/>
-                    <constraint firstAttribute="bottom" secondItem="qfB-Ts-2VD" secondAttribute="bottom" constant="12" id="sWh-4F-9qL"/>
-                    <constraint firstAttribute="trailing" secondItem="Qcw-gC-cUs" secondAttribute="trailing" constant="20" id="uIL-cc-iPv"/>
-                    <constraint firstItem="Qcw-gC-cUs" firstAttribute="centerY" secondItem="WUc-Jp-edr" secondAttribute="centerY" id="uKV-9a-bL2"/>
-                    <constraint firstItem="oI8-iO-lNI" firstAttribute="top" secondItem="WUc-Jp-edr" secondAttribute="bottom" constant="16" id="uL4-W0-3k2"/>
-                </constraints>
-            </view>
-            <point key="canvasLocation" x="-281" y="189"/>
-        </window>
     </objects>
     <resources>
         <image name="github" width="150" height="150"/>
