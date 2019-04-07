@@ -2,14 +2,13 @@ import '@css/base.css';
 import '@css/style.scss';
 import cheerio from 'cheerio'
 import event from '@js/eventemit'
-
-window.event = event
+import jsbridge from '@js/jsbridge'
 
 if (process.env.NODE_ENV !== 'production') {
   require('./index.html')
   const data = require('@assets/testData.html')
   setTimeout(() => {
-    event.emit('getData', data)
+    event.emit('render', data)
   }, 100)
 }
 
@@ -47,7 +46,7 @@ const App = (() => {
     return tpl
   }
 
-  function renderDOM({headerUrl, username, nickname, profileBio, lastUpdate, todayCommit, todayColor, dailyGraph}) {
+  function renderDOM({headerUrl, username, nickname, statusEmoji, profileBio, lastUpdate, todayCommit, todayColor, dailyGraph}) {
     document.querySelector('.J_userHeader').setAttribute('src', headerUrl)
     document.querySelector('.J_username').innerText = username
     document.querySelector('.J_nickname').innerText = nickname
@@ -56,6 +55,12 @@ const App = (() => {
     document.querySelector('.J_today').innerText = todayCommit
     document.querySelector('.J_today_color').style.background = todayColor
     document.querySelector('.J_daily').innerHTML = dailyGraph
+    
+    if (statusEmoji.trim() === '' || statusEmoji === null || typeof statusEmoji === 'undefined') {
+      document.querySelector('.J_focus').style.display = 'none'
+    } else {
+      document.querySelector('.J_focus').innerText = statusEmoji
+    }
   }
 
   function render(data) {
@@ -64,6 +69,8 @@ const App = (() => {
     const headerUrl = $('.u-photo .avatar').attr('src')
     const username = $('.p-name').html()
     const nickname = $('.p-nickname').html()
+
+    const statusEmoji = $('.user-status-emoji-container .g-emoji').eq(0).text()
 
     const profileBio = $('.js-user-profile-bio').text()
 
@@ -75,7 +82,7 @@ const App = (() => {
 
     const lastUpdate = getLastUpdate($)
 
-    renderDOM({ headerUrl, username, nickname, profileBio, lastUpdate, todayCommit, todayColor, dailyGraph })
+    renderDOM({ headerUrl, username, nickname, statusEmoji, profileBio, lastUpdate, todayCommit, todayColor, dailyGraph })
   }
 
   function listen() {
@@ -85,15 +92,23 @@ const App = (() => {
 
     document.querySelector('.J_setting').addEventListener('submit', (e) => {
       e.preventDefault()
-
       const username = document.querySelector('.J_username_input').value
-      try {
-        window.webkit.messageHandlers.setUser.postMessage(username)
-      } catch (_) { }
+      jsbridge.setUserName(username)
       document.body.classList.remove('f-setting')
     })
 
-    event.on('getData', (data) => {
+    document.querySelector('.J_cancel').addEventListener('click', () => {
+      document.body.classList.remove('f-setting')
+    })
+
+    document.querySelectorAll('.J_openURL').forEach((dom) => {
+      dom.addEventListener('click', () => {
+        const username = document.querySelector('.J_nickname').innerText
+        jsbridge.openURL(`https://github.com/${username}`)
+      })
+    })
+
+    event.on('render', (data) => {
       App.render(data)
     })
 

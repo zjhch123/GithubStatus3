@@ -17,6 +17,7 @@
     top: 50%;
     left: 50%;
     transform: translate3d(-50%, -50%, 0);
+    text-align: center;
     .u-username {
       -webkit-appearance: none;
       display: block;
@@ -27,27 +28,37 @@
       height: 35px;
       line-height: 35px;
       font-size: 20px;
+      text-align: left;
 
       border-radius: 4px;
       border-color: transparent;
 
       padding-left: 8px;
       box-sizing: border-box;
+      cursor: text;
     }
-    .u-submit {
-      display: block;
+    .u-btn {
+      display: inline-block;
       -webkit-appearance: none;
+      cursor: pointer;
 
-      margin: 12px auto 0;
+      margin: 12px 6px 0;
       font-size: 14px;
       line-height: 1.499;
       height: 32px;
+      min-width: 90px;
       padding: 0 18px;
       border-radius: 4px;
       user-select: none;
       box-sizing: border-box;
+    }
+    .u-submit {
       background: #B2CE7D;
       color: white;
+    }
+    .u-cancel {
+      background: white;
+      color: #B2CE7D;
     }
   }
 }
