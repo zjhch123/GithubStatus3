@@ -1,6 +1,7 @@
 import '@css/base.css';
 import '@css/style.scss';
 import cheerio from 'cheerio'
+import IScroll from 'iscroll'
 import event from '@js/eventemit'
 import jsbridge from '@js/jsbridge'
 
@@ -46,7 +47,7 @@ const App = (() => {
     return tpl
   }
 
-  function renderDOM({headerUrl, username, nickname, statusEmoji, profileBio, lastUpdate, todayCommit, todayColor, dailyGraph}) {
+  function renderDOM({ headerUrl, username, nickname, statusEmoji, profileBio, lastUpdate, todayCommit, todayColor, dailyGraph }) {
     document.querySelector('.J_userHeader').setAttribute('src', headerUrl)
     document.querySelector('.J_username').innerText = username
     document.querySelector('.J_nickname').innerText = nickname
@@ -61,6 +62,12 @@ const App = (() => {
     } else {
       document.querySelector('.J_focus').innerText = statusEmoji
     }
+
+    new IScroll('#J_IScroll', {
+      scrollX: true,
+      scrollY: false,
+      startX: -548
+    })
   }
 
   function render(data) {
