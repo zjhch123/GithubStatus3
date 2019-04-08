@@ -139,11 +139,14 @@
       overflow: hidden;
     }
     .u-graph {
+      padding: 0 6px;
       display: flex;
-      flex-wrap: nowrap;
-      transform: translateX(-529px);
+      width: 899px;
+      white-space: nowrap;
+      position: relative;
     }
     .group {
+      position: relative;
       display: flex;
       flex-direction: column;
       width: 15px;
@@ -159,6 +162,8 @@
         transition: all .4s;
         box-sizing: border-box;
         border: 1px solid transparent;
+        border-radius: 2px;
+        will-change: transform, border-color;
         &:last-child {
           margin-bottom: 0;
         }
