@@ -17,7 +17,7 @@
   "author": "",
   "license": "MIT",
   "devDependencies": {
-    "emiya-scripts": "^1.1.0"
+    "emiya-scripts": "^2.0.0"
   },
   "dependencies": {
     "cheerio": "^1.0.0-rc.2",

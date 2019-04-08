@@ -7,10 +7,13 @@ import jsbridge from '@js/jsbridge'
 
 if (process.env.NODE_ENV !== 'production') {
   require('./index.html')
-  const data = require('@assets/testData.html')
-  setTimeout(() => {
-    event.emit('render', data)
-  }, 100)
+  fetch('/api/zjhch123')
+    .then(response => response.text())
+    .then(body => {
+      setTimeout(() => {
+        event.emit('render', body)
+      })
+    })
 }
 
 const App = (() => {
