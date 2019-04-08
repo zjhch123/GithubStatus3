@@ -41,7 +41,9 @@
     </div>
     <div class="g-setting">
         <form class="m-user J_setting" autocapitalize="off" autocorrect="off" autocomplete="off">
-            <input type="input" spellcheck="false" class="u-username J_username_input" name="username" placeholder="Github Username">
+            <div class="m-input">
+                <label for="username" class="u-input-prefix">https://github.com/</label><input id="username" type="input" spellcheck="false" class="u-username J_username_input" name="username" placeholder="Github Username">
+            </div>
             <input type="submit" class="u-btn u-submit" value="Sure">
             <input type="button" class="u-btn u-cancel J_cancel" value="Cancel">
         </form>

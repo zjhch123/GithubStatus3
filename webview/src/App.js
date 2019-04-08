@@ -69,7 +69,7 @@ const App = (() => {
     new IScroll('#J_IScroll', {
       scrollX: true,
       scrollY: false,
-      startX: -548
+      startX: -544
     })
   }
 
