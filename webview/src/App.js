@@ -108,6 +108,10 @@ const App = (() => {
     }
 
     document.querySelector('.J_today').classList.add('f-startAni')
+    
+    setTimeout(() => {
+      document.querySelector('.J_today').classList.remove('f-startAni')
+    }, 5000)
 
     new IScroll('#J_IScroll', {
       scrollX: true,
