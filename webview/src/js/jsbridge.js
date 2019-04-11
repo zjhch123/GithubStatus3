@@ -7,7 +7,9 @@ const setUserName = (username) => {
 const openURL = (url) => {
   try {
     window.webkit.messageHandlers.openURL.postMessage(url)
-  } catch (_) { }
+  } catch (_) {
+    window.open(url)
+  }
 }
 
 export default {
