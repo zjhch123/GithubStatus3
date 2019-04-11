@@ -50,7 +50,43 @@ const App = (() => {
     return tpl
   }
 
-  function renderDOM({ headerUrl, username, nickname, statusEmoji, profileBio, lastUpdate, todayCommit, todayColor, dailyGraph }) {
+  function getRecentActivities($) {
+    const $c = $('.profile-rollup-content').eq(0).find('li')
+    const activities = []
+
+    for (let i = 0; i < $c.length; i++) {
+      const $content = $c.eq(i)
+      const $nameDOM = $content.find('a').eq(0)
+      const $commitDOM = $content.find('a').eq(1)
+      const $barDOM = $content.find('.tooltipped').eq(0)
+
+      const name = $nameDOM.html()
+      const nameHref = `https://github.com` + $nameDOM.attr('href')
+
+      const commit = $commitDOM.html()
+      const commitHref = `https://github.com` + $commitDOM.attr('href')
+
+      const barWidth = $barDOM.css('width')
+      const barColor = $barDOM.find('span').css('background-color')
+
+      activities.push({
+        name, nameHref, commit, commitHref, barWidth, barColor
+      })
+    }
+
+    return activities.slice(0, 5).map(({ name, nameHref, barWidth, barColor }) => (`
+      <div class="u-item">
+        <div class="u-left">
+            <a href="javascript:;" class="name J_customOpenURL" data-href="${nameHref}">${name}</a>
+        </div>
+        <div class="u-right">
+            <span class="bar J_bar f-short" style="width: ${barWidth}; background-color: ${barColor}"></span>
+        </div>
+      </div>
+    `)).join(' ')
+  }
+
+  function renderDOM({ headerUrl, username, nickname, statusEmoji, profileBio, lastUpdate, todayCommit, todayColor, dailyGraph, recentActivities }) {
     document.querySelector('.J_userHeader').setAttribute('src', headerUrl)
     document.querySelector('.J_username').innerText = username
     document.querySelector('.J_nickname').innerText = nickname
@@ -59,17 +95,24 @@ const App = (() => {
     document.querySelector('.J_today').innerText = todayCommit
     document.querySelector('.J_today_color').style.background = todayColor
     document.querySelector('.J_daily').innerHTML = dailyGraph
-    
+    document.querySelector('.J_recentList').innerHTML = recentActivities
+
+    setTimeout(() => {
+      document.querySelectorAll('.J_bar').forEach(dom => dom.classList.remove('f-short'))
+    }, 1000)
+
     if (statusEmoji.trim() === '' || statusEmoji === null || typeof statusEmoji === 'undefined') {
       document.querySelector('.J_focus').style.display = 'none'
     } else {
       document.querySelector('.J_focus').innerText = statusEmoji
     }
 
+    document.querySelector('.J_today').classList.add('f-startAni')
+
     new IScroll('#J_IScroll', {
       scrollX: true,
       scrollY: false,
-      startX: -544
+      startX: -539
     })
   }
 
@@ -91,13 +134,20 @@ const App = (() => {
     const dailyGraph = getDailyGraph($)
 
     const lastUpdate = getLastUpdate($)
+    const recentActivities = getRecentActivities($)
 
-    renderDOM({ headerUrl, username, nickname, statusEmoji, profileBio, lastUpdate, todayCommit, todayColor, dailyGraph })
+    renderDOM({ headerUrl, username, nickname, statusEmoji, profileBio, lastUpdate, todayCommit, todayColor, dailyGraph, recentActivities })
   }
 
   function listen() {
     document.body.addEventListener('contextmenu', (e) => {
       e.preventDefault()
+    })
+
+    document.body.addEventListener('click', (e) => {
+      if (e.target.classList.contains('J_customOpenURL')) {
+        jsbridge.openURL(e.target.dataset.href)
+      }
     })
 
     document.querySelector('.J_setting').addEventListener('submit', (e) => {
