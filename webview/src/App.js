@@ -127,7 +127,8 @@ const App = (() => {
     const username = $('.p-name').html()
     const nickname = $('.p-nickname').html()
 
-    const statusEmoji = $('.user-status-emoji-container .g-emoji').eq(0).text()
+    const statusEmoji = $('.user-status-container .g-emoji').eq(0).text()
+
 
     const profileBio = $('.js-user-profile-bio').text()
 
