@@ -130,7 +130,7 @@ const App = (() => {
     const statusEmoji = $('.user-status-container .g-emoji').eq(0).text()
 
 
-    const profileBio = $('.js-user-profile-bio').text()
+    const profileBio = $('.js-user-profile-bio').eq(0).text()
 
     const today = $('rect').last()
     const todayCommit = today.attr('data-count')
