@@ -29,15 +29,9 @@ gulp.task('clean-css', function() {
     .pipe(gulp.dest(cssExportDirectory))
 })
 
-
 gulp.task('dev', function(done) {
-  const watcher = gulp.watch(sassEntry, { ignoreInitial: false }, gulp.series(['css']))
-  const cp = proc.spawn(electron, ['.'], { stdio: ['inherit', 'inherit', 'inherit'] })
-  
-  cp.addListener('close', function() {
-    watcher.close()
-    done()
-  })
+  gulp.watch(sassEntry, { ignoreInitial: false }, gulp.series(['css']))
+  proc.spawn(electron, ['.'], { stdio: ['inherit', 'inherit', 'inherit'] })
 })
 
 gulp.task('build', gulp.series(['css', 'clean-css']))

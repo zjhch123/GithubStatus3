@@ -10,17 +10,17 @@
     <div class="m-info m-grid">
       <div class="u-header">
         <img class="header J_userHeader J_openURL" src="./image/logo.png">
-        <span class="focus J_focus"></span>
+        <div class="focus J_focus"></div>
       </div>
       <div class="u-info">
         <div>
           <span class="nickname J_nickname J_openURL">--</span>
           <span class="username J_username">--</span>
         </div>
-        <div class="sign J_profile_bio">Loading...</div>
+        <div class="sign J_profile_bio">--</div>
         <div class="update">
-          <span>Last Commit on: </span>
-          <span class="J_last_update">Loading...</span>
+          <span>Joined on: </span>
+          <span class="J_last_update">--</span>
         </div>
       </div>
     </div>
@@ -38,14 +38,43 @@
       </div>
     </div>
     <div class="m-activity m-grid">
-      <h1>Contribution activity</h1>
+      <h1>Contribution activities</h1>
       <div class="m-list J_recentList">Loading...</div>
     </div>
+    <div class="m-controllers">
+      <div class="m-left">
+        <img src="./image/github.png" class="u-item J_openURL J_github">
+      </div>
+      <div class="m-right">
+        <a href="javascript:;" class="u-refresh J_refresh">
+          <img src="./image/refresh.png" class="u-item">
+        </a>
+        <a href="javascript:;" class="u-setting J_setting">
+          <img src="./image/setting.png" class="u-item">
+        </a>
+        <a href="javascript:;" class="u-logout J_logout">
+          <img src="./image/logout.png" class="u-item">
+        </a>
+      </div>
+    </div>
   </div>
-  <div class="g-setting">
-    <form class="m-user J_setting" autocapitalize="off" autocorrect="off" autocomplete="off">
+  <div class="g-setting g-is-loading">
+    <img src="./image/loading.png" class="u-loading" />
+  </div>
+  <div class="g-setting g-setting-user">
+    <form class="m-user J_user_form" autocapitalize="off" autocorrect="off" autocomplete="off">
       <div class="m-input">
         <label for="username" class="u-input-prefix">https://github.com/</label><input id="username" type="input" spellcheck="false" class="u-username J_username_input" name="username" placeholder="Github Username">
+      </div>
+      <input type="submit" class="u-btn u-submit" value="Sure">
+      <input type="button" class="u-btn u-cancel J_cancel" value="Cancel">
+    </form>
+  </div>
+  <div class="g-setting g-setting-token">
+    <p class="m-tlt">请设置Personal access token<br>授权程序访问您的github数据</p>
+    <form class="m-token J_token_form" autocapitalize="off" autocorrect="off" autocomplete="off">
+      <div class="m-input">
+        <input id="token" type="input" spellcheck="false" class="u-token J_token_input" name="token" placeholder="Personal access token">
       </div>
       <input type="submit" class="u-btn u-submit" value="Sure">
       <input type="button" class="u-btn u-cancel J_cancel" value="Cancel">

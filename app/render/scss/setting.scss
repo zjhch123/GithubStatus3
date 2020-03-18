@@ -12,6 +12,49 @@
   pointer-events: none;
   transition: all .4s;
 
+  form {
+    text-align: center;
+  }
+
+  input {
+    display: block;
+    -webkit-appearance: none;
+    height: 35px;
+    text-align: left;
+    font-size: 16px;
+    box-sizing: border-box;
+    cursor: text;
+    border-radius: 5px;
+    padding-left: 8px;
+  }
+
+  .u-btn {
+    display: inline-block;
+    -webkit-appearance: none;
+    cursor: pointer;
+
+    margin: 12px 6px 0;
+    font-size: 14px;
+    line-height: 1.499;
+    height: 32px;
+    min-width: 90px;
+    padding: 0 18px;
+    border-radius: 4px;
+    user-select: auto !important;
+    box-sizing: border-box;
+    text-align: center;
+  }
+  .u-submit {
+    background: #B2CE7D;
+    color: white;
+  }
+  .u-cancel {
+    background: white;
+    color: #B2CE7D;
+  }
+}
+
+.g-setting-user {
   .m-user {
     position: absolute;
     top: 50%;
@@ -36,38 +79,40 @@
         box-sizing: border-box;
       }
       .u-username {
-        display: block;
         width: 128px;
-        -webkit-appearance: none;
-        height: 35px;
-        text-align: left;
-        font-size: 16px;
-        box-sizing: border-box;
-        cursor: text;
       }
     }
-    .u-btn {
-      display: inline-block;
-      -webkit-appearance: none;
-      cursor: pointer;
-
-      margin: 12px 6px 0;
-      font-size: 14px;
-      line-height: 1.499;
-      height: 32px;
-      min-width: 90px;
-      padding: 0 18px;
-      border-radius: 4px;
-      user-select: auto !important;
-      box-sizing: border-box;
+  }
+}
+.g-setting-token {
+  .m-tlt {
+    margin-top: 200px;
+    color: white;
+    font-size: 18px;
+    text-align: center;
+  }
+  .u-token {
+    width: 300px;
+    margin: 20px auto;
+  }
+}
+.g-is-loading {
+  @keyframes loading {
+    from {
+      transform: rotate(0)
     }
-    .u-submit {
-      background: #B2CE7D;
-      color: white;
+    to {
+      transform: rotate(360deg);
     }
-    .u-cancel {
-      background: white;
-      color: #B2CE7D;
-    }
+  }
+  .u-loading {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 40px;
+    height: 40px;
+    margin-left: -20px;
+    margin-top: -20px;
+    animation: loading 2s linear infinite;
   }
 }

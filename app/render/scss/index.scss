@@ -13,8 +13,20 @@ html {
   }
   body {
     position: relative;
-    &.f-setting {
-      .g-setting {
+    &.f-setting-user {
+      .g-setting-user {
+        opacity: 1;
+        pointer-events: auto;
+      }
+    }
+    &.f-setting-token {
+      .g-setting-token {
+        opacity: 1;
+        pointer-events: auto;
+      }
+    }
+    &.f-is-loading {
+      .g-is-loading {
         opacity: 1;
         pointer-events: auto;
       }

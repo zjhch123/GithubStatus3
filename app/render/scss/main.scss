@@ -216,11 +216,40 @@
             left: 0;
             top: 50%;
             transform: translateY(-50%);
-            height: 8px;
+            height: 9px;
             display: block;
             transition: width .4s;
+            border-radius: 4px;
           }
         }
+      }
+    }
+  }
+  .m-controllers {
+    background-color: #F5F5F5;
+    padding: 4px 6px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .m-left,
+    .m-right {
+      display: flex;
+      align-items: center;
+      a {
+        display: block;
+      }
+    }
+    .u-item {
+      height: 24px;
+      width: 24px;
+      display: block;
+      margin: 0 4px;
+      &:hover {
+        cursor: pointer;
+      }
+      &:active {
+        transform: scale(.95);
       }
     }
   }

@@ -1,11 +1,15 @@
-const { app, BrowserWindow, Tray } = require('electron')
+const { app, BrowserWindow, Tray, ipcMain, Notification } = require('electron')
 const path = require('path')
+const open = require('open')
 const appMenu = require('./app-menu')
 
 const isDev = process.env.NODE_ENV === 'development'
 
 if (isDev) {
-  require('./main.dev')
+  // hot reload
+  require('electron-reload')(__dirname, {
+    electron: path.join(__dirname, '..', 'node_modules', '.bin', 'electron')
+  })
 }
 
 app.dock.hide()
@@ -18,18 +22,20 @@ let tray = null
 
 function createWindow () {
   mainWindow = new BrowserWindow({
-    width: 420,
-    height: 600,
+    width: isDev ? 820 : 420,
+    height: 626,
     show: false,
     frame: false,
     fullscreenable: false,
+    movable: false,
     resizable: false,
     alwaysOnTop: true,
     focusable: true,
     backgroundColor: 'transparent',
     webPreferences: {
       nodeIntegration: true,
-      backgroundThrottling: false
+      backgroundThrottling: false,
+      defaultEncoding: 'utf-8',
     }
   })
 
@@ -37,6 +43,13 @@ function createWindow () {
   mainWindow.on('blur', function () {
     mainWindow.hide()
   })
+  mainWindow.on('show', function (e) {
+    e.sender.send('windowDidShow')
+  })
+
+  if (isDev) {
+    mainWindow.webContents.openDevTools()
+  }
 }
 
 function createTray () {
@@ -56,7 +69,7 @@ function toggleMainWindow () {
 
 function showMainWindow () {
   const position = getWindowPosition();
-  mainWindow.setPosition(position.x, position.y, false);
+  mainWindow.setPosition(position.x, position.y + 4, false);
   mainWindow.show()
   mainWindow.focus()
 }
@@ -71,12 +84,21 @@ function getWindowPosition () {
   return {x: x, y: y}
 }
 
+app.allowRendererProcessReuse = true
+
 app.whenReady().then(function () {
-  createWindow()
   createTray()
-  showMainWindow()
+  createWindow()
 })
 
 app.on('activate', function () {
   if (BrowserWindow.getAllWindows().length === 0) createWindow()
+})
+
+ipcMain.on('exit', () => {
+  app.exit(0)
+})
+
+ipcMain.on('openURL', (e, url) => {
+  open(url)
 })
