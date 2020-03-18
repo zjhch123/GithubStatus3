@@ -55,7 +55,13 @@ const listen = () => {
 
   $('.J_user_form').on('submit', (e) => {
     e.preventDefault()
-    targetUsername = $('.J_username_input').val()
+    const inputUsername = $('.J_username_input').val().trim()
+
+    if (inputUsername === targetUsername) {
+      return
+    }
+
+    targetUsername = inputUsername
     store.set('targetUsername', targetUsername)
     hideAll()
     launch()
@@ -72,7 +78,23 @@ const listen = () => {
 
   ipcRenderer.on('windowDidShow', () => {
     hideAll()
-    launch(targetUsername)
+    launch()
+  })
+
+  ipcRenderer.on('request-success', (e, json) => {
+    renderPage(json)
+    store.set('lastData', JSON.stringify(json))
+  })
+
+  ipcRenderer.on('request-401', (e, json) => {
+    token = null
+    store.set('token', null)
+    hideAll()
+    showSetToken()
+  })
+
+  ipcRenderer.on('request-failed', (e, json) => {
+    hideAll()
   })
 }
 
@@ -168,54 +190,6 @@ const renderPage = ({ data }) => {
   renderEvents(user)
 }
 
-const body = (username) => {
-  const now = new Date()
-
-  const month = new Date(now.getFullYear(), now.getMonth(), 1).toISOString()
-
-  return {
-    query: `{
-      user(login: "${username}") {
-        login
-        name
-        bio
-        url
-        status {
-          emojiHTML
-          message
-        }
-        createdAt
-        avatarUrl
-        events: contributionsCollection(from: "${month}") {
-          commitContributionsByRepository(maxRepositories: 5) {
-            repository {
-              owner {
-                login
-              }
-              name
-              url
-            }
-            contributions {
-              totalCount
-            }
-          }
-        }
-        contributions: contributionsCollection {
-          contributionCalendar {
-            weeks {
-              contributionDays {
-                color
-                contributionCount
-                date
-              }
-            }
-          }
-        }
-      }
-    }`
-  }
-}
-
 const firstRender = () => {
   isFirstRender = false
 
@@ -246,24 +220,7 @@ const launch = () => {
   }
 
   showLoading()
-  fetch('https://api.github.com/graphql', {
-    method: 'post',
-    headers: {
-      Authorization: `bearer ${token}`,
-      Cookie: 'tz=Asia%2FShanghai',
-    },
-    body: JSON.stringify(body(targetUsername))
-  }).then(data => data.json())
-    .then(json => {
-      renderPage(json)
-      store.set('lastData', JSON.stringify(json))
-    })
-    .catch(() => {
-      token = null
-      store.set('token', null)
-      hideAll()
-      showSetToken()
-    })
+  ipcRenderer.send('request', { targetUsername, token })
 }
 
 listen()
