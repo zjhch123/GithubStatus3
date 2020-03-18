@@ -1,8 +1,15 @@
-const { app, BrowserWindow, Tray, globalShortcut } = require('electron')
+const { app, BrowserWindow, Tray } = require('electron')
 const path = require('path')
-const initShortcut = require('./shortcut')
+const appMenu = require('./app-menu')
+
+const isDev = process.env.NODE_ENV === 'development'
+
+if (isDev) {
+  require('./main.dev')
+}
 
 app.dock.hide()
+appMenu(isDev)
 
 const renderDirectory = path.join(__dirname, 'render')
 
@@ -11,7 +18,7 @@ let tray = null
 
 function createWindow () {
   mainWindow = new BrowserWindow({
-    width: 800,
+    width: 420,
     height: 600,
     show: false,
     frame: false,
@@ -19,6 +26,7 @@ function createWindow () {
     resizable: false,
     alwaysOnTop: true,
     focusable: true,
+    backgroundColor: 'transparent',
     webPreferences: {
       nodeIntegration: true,
       backgroundThrottling: false
@@ -26,8 +34,6 @@ function createWindow () {
   })
 
   mainWindow.loadURL(`file://${path.join(renderDirectory, 'index.html')}`)
-
-  // mainWindow.webContents.openDevTools()
   mainWindow.on('blur', function () {
     mainWindow.hide()
   })
@@ -68,16 +74,9 @@ function getWindowPosition () {
 app.whenReady().then(function () {
   createWindow()
   createTray()
-  initShortcut()
   showMainWindow()
 })
 
-app.on('window-all-closed', function () {
-  createWindow()
-})
-
 app.on('activate', function () {
-  // On macOS it's common to re-create a window in the app when the
-  // dock icon is clicked and there are no other windows open.
   if (BrowserWindow.getAllWindows().length === 0) createWindow()
 })
