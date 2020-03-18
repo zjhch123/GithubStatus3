@@ -5,6 +5,8 @@ const Store = require('electron-store')
 
 const store = new Store()
 
+let isFirstRender = true
+let lastData = store.get('lastData', null)
 let targetUsername = store.get('targetUsername', null)
 let token = store.get('token', null)
 let iscrollInstance = null
@@ -155,7 +157,7 @@ const renderEvents = ({ events }) => {
 const renderPage = ({ data }) => {
   const { user } = data
   hideAll()
-  
+
   if (user === null) {
     showSetTargetUsername()
     return
@@ -214,9 +216,26 @@ const body = (username) => {
   }
 }
 
+const firstRender = () => {
+  isFirstRender = false
+
+  if (lastData) {
+    renderPage(JSON.parse(lastData))
+    setTimeout(() => {
+      $('.J_main').removeClass('hidden')
+    }, 500)
+    return
+  }
+
+  $('.J_main').removeClass('hidden')
+}
+
 const launch = () => {
   hideAll()
 
+  if (isFirstRender) {
+    firstRender()
+  }
   if (!token) {
     showSetToken()
     return
@@ -235,7 +254,10 @@ const launch = () => {
     },
     body: JSON.stringify(body(targetUsername))
   }).then(data => data.json())
-    .then(json => renderPage(json))
+    .then(json => {
+      renderPage(json)
+      store.set('lastData', JSON.stringify(json))
+    })
     .catch(() => {
       token = null
       store.set('token', null)

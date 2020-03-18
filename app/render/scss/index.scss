@@ -13,6 +13,10 @@ html {
   }
   body {
     position: relative;
+    transition: opacity .8s;
+    &.hidden {
+      opacity: 0;
+    }
     &.f-setting-user {
       .g-setting-user {
         opacity: 1;
