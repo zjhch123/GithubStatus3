@@ -88,9 +88,17 @@
         -webkit-line-clamp: 2;
         -webkit-box-orient: vertical;
       }
-      .update {
-        font-size: 14px;
-        font-weight: bold;
+      .org {
+        display: flex;
+        .u-org + .u-org {
+          margin: 0 4px;
+        }
+        img {
+          cursor: pointer;
+          width: 20px;
+          height: 20px;
+          display: block;
+        }
       }
     }
   }

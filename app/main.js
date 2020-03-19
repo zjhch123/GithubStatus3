@@ -105,14 +105,8 @@ ipcMain.on('openURL', (e, url) => {
 })
 
 ipcMain.on('request', (e, requestParams) => {
-  request(requestParams).then((data) => {
-    if (data.status === 401) {
-      e.sender.send('request-401')
-      return
-    }
-
-    return data.json()
-  }).then(json => e.sender.send('request-success', json))
+  request(requestParams)
+    .then(json => e.sender.send('request-success', json))
     .catch((err) => {
       console.log(err)
       e.sender && e.sender.send('request-failed')

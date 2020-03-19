@@ -8,16 +8,10 @@ const store = new Store()
 let isFirstRender = true
 let lastData = store.get('lastData', null)
 let targetUsername = store.get('targetUsername', null)
-let token = store.get('token', null)
 let iscrollInstance = null
 
 const showLoading = () => {
   $('body').addClass('f-is-loading')
-}
-
-const showSetToken = () => {
-  $('body').addClass('f-setting-token')
-  $('.J_token_input').val('') 
 }
 
 const showSetTargetUsername = () => {
@@ -43,14 +37,6 @@ const listen = () => {
   
   $('.J_cancel').on('click', () => {
     hideAll()
-  })
-
-  $('.J_token_form').on('submit', (e) => {
-    e.preventDefault()
-    token = $('.J_token_input').val()
-    store.set('token', token)
-    hideAll()
-    launch()
   })
 
   $('.J_user_form').on('submit', (e) => {
@@ -87,10 +73,7 @@ const listen = () => {
   })
 
   ipcRenderer.on('request-401', (e, json) => {
-    token = null
-    store.set('token', null)
     hideAll()
-    showSetToken()
   })
 
   ipcRenderer.on('request-failed', (e, json) => {
@@ -98,14 +81,7 @@ const listen = () => {
   })
 }
 
-const padStart = (n) => ('0' + n).slice(-2)
-
-const convertDate = (ts) => {
-  const day = new Date(ts)
-  return `${day.getFullYear()}-${padStart(day.getMonth() + 1)}-${padStart(day.getDate())}`;
-}
-
-const renderUser = ({ login, name, bio, url, status, avatarUrl, createdAt }) => {
+const renderUser = ({ login, name, bio, url, status, avatarUrl, organizations }) => {
   $('.J_userHeader').attr('src', avatarUrl)
   $('.J_userHeader').attr('data-href', url)
   $('.J_username').text(login)
@@ -115,8 +91,12 @@ const renderUser = ({ login, name, bio, url, status, avatarUrl, createdAt }) => 
   if (status) {
     $('.J_focus').html(status.emojiHTML)
   }
-  $('.J_last_update').text(convertDate(createdAt))
   $('.J_github').attr('data-href', url)
+  if (organizations) {
+    $('.J_organizations').html(organizations.nodes.map(({ avatar, href }) => `
+      <div data-href="${href}" class="J_openURL u-org"><img src="${avatar}"></div>
+    `).slice(0, 8).join(''))
+  }
 }
 
 const renderContributions = ({ contributions }) => {
@@ -158,16 +138,16 @@ const renderEvents = ({ events }) => {
   const { commitContributionsByRepository } = events
   const totalCount = commitContributionsByRepository.reduce((prev, { contributions: { totalCount: count } }) => prev + count, 0)
 
-  const eventsTemplate = commitContributionsByRepository.map(({ repository: { name, url, owner: { login } }, contributions: { totalCount: count } }) => `
+  const eventsTemplate = commitContributionsByRepository.map(({ repository: { name, url }, contributions: { totalCount: count } }) => `
     <div class="u-item">
       <div class="u-left">
-        <span class="name J_openURL" data-href="${url}">${login}/${name}</span>
+        <span class="name J_openURL" data-href="${url}">${name}</span>
       </div>
       <div class="u-right">
         <span class="bar J_bar f-short" style="width: ${~~(count / totalCount * 92)}px; background-color: ${ count / totalCount > 0.5 ? '#7bc96f' : '#C6E48B' }"></span>
       </div>
     </div>
-  `).join('')
+  `).slice(0, 5).join('')
 
   $('.J_recentList').html(eventsTemplate)
 
@@ -210,17 +190,13 @@ const launch = () => {
   if (isFirstRender) {
     firstRender()
   }
-  if (!token) {
-    showSetToken()
-    return
-  }
   if (!targetUsername) {
     showSetTargetUsername()
     return
   }
 
   showLoading()
-  ipcRenderer.send('request', { targetUsername, token })
+  ipcRenderer.send('request', { targetUsername })
 }
 
 listen()
