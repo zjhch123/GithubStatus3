@@ -1,6 +1,6 @@
 {
   "name": "github-status-3",
-  "version": "1.0.0",
+  "version": "4.0.0",
   "description": "Get your github status",
   "main": "app/main/main.js",
   "scripts": {
@@ -35,6 +35,7 @@
     "open": "^7.0.3"
   },
   "build": {
+    "productName": "GithubStatus",
     "appId": "xyz.hduzplus.github_status",
     "mac": {
       "category": "public.app-category.developer-tools",
