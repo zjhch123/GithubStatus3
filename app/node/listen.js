@@ -14,7 +14,16 @@ ipcMain.on('request', (e, requestParams) => {
   request(requestParams)
     .then(json => e.sender.send('request-success', json))
     .catch((err) => {
-      console.log(err)
-      e.sender && e.sender.send('request-failed')
+      if (!e.sender) {
+        return
+      }
+      switch (err.message) {
+        case '404':
+          e.sender.send('request-404')
+          break
+        default:
+          e.sender.send('request-failed')
+          break
+      }
     })
 })

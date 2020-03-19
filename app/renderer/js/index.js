@@ -76,8 +76,9 @@ const listen = () => {
     store.set('lastData', JSON.stringify(json))
   })
 
-  ipcRenderer.on('request-401', (e, json) => {
+  ipcRenderer.on('request-404', (e, json) => {
     hideAll()
+    showSetTargetUsername()
   })
 
   ipcRenderer.on('request-failed', (e, json) => {
@@ -92,8 +93,10 @@ const renderUser = ({ login, name, bio, url, status, avatarUrl, organizations })
   $('.J_nickname').text(name)
   $('.J_nickname').attr('data-href', url)
   $('.J_profile_bio').text(bio)
-  if (status) {
-    $('.J_focus').html(status.emojiHTML)
+  if (status && status.emojiHTML) {
+    $('.J_focus').html(status.emojiHTML).show()
+  } else {
+    $('.J_focus').hide()
   }
   $('.J_github').attr('data-href', url)
   if (organizations) {

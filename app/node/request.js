@@ -1,5 +1,6 @@
 const fetch = require('node-fetch')
 const cheerio = require('cheerio')
+const cache = require('./cache')
 
 const convertUser = ($) => {
   const login = $('.p-nickname').eq(0).text()
@@ -107,6 +108,12 @@ const convertData = (htmlData) => {
 }
 
 module.exports = function request ({ targetUsername }) {
+  const cachedData = cache.get(targetUsername)
+
+  if (!!cachedData) {
+    return Promise.resolve(cachedData)
+  }
+
   return fetch(`https://github.com/${targetUsername}`, {
     method: 'get',
     headers: {
@@ -121,6 +128,11 @@ module.exports = function request ({ targetUsername }) {
       "Accept-Language":"zh-CN,zh;q=0.9,zh-TW;q=0.8,en;q=0.7,ja;q=0.6,la;q=0.5",
       "Cookie":"tz=Asia%2FShanghai",
     }
-  }).then(data => data.text())
-    .then(data => convertData(data))
+  }).then((data) => {
+    if (data.status === 404) {
+      throw new Error('404')
+    }
+
+    return data.text()
+  }).then(data => cache.set(targetUsername, convertData(data)))
 }
