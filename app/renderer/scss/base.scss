@@ -1,0 +1,20 @@
+body,button,dd,dl,form,h1,h2,h3,h4,h5,h6,input,ol,p,td,textarea,th,ul{margin:0;padding:0}
+iframe,img{border:0 none}
+table{border-collapse:collapse;border-spacing:0;table-layout:fixed}
+ol,ul{list-style:none outside none}
+h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:700}
+em,strong{font-style:normal;font-weight:700}
+html{-webkit-text-size-adjust:100%;-moz-text-size-adjust:100%;-ms-text-size-adjust:100%;text-size-adjust:100%;font-size:366.211%}
+body,input,select,textarea{color:#000}
+a,button{cursor:pointer;text-decoration:none}
+body{position:relative}
+img[src=""]{opacity:0}
+*{-webkit-tap-highlight-color:transparent}
+::-ms-clear,::-ms-reveal{display:none}
+input{outline:0;border:0}
+html{font-size:14px}
+::-webkit-input-placeholder{color:#aaa}
+::-moz-placeholder{color:#aaa}
+:-ms-input-placeholder{color:#aaa}
+input:-moz-placeholder{color:#aaa}
+:not(input){-webkit-user-select:none}

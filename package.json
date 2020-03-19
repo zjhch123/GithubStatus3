@@ -1,0 +1,45 @@
+{
+  "name": "github-status-3",
+  "version": "4.0.0",
+  "description": "Get your github status",
+  "main": "app/main/main.js",
+  "scripts": {
+    "dev": "NODE_ENV=development gulp dev",
+    "start": "electron .",
+    "build": "electron-builder"
+  },
+  "repository": "https://github.com/zjhch123/GithubStatus3",
+  "keywords": [
+    "github",
+    "status"
+  ],
+  "author": "zjhch123<416836508@qq.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "autoprefixer": "^9.7.4",
+    "electron": "^8.1.1",
+    "electron-builder": "^22.4.1",
+    "electron-reload": "^1.5.0",
+    "gulp": "^4.0.2",
+    "gulp-clean-css": "^4.3.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-postcss": "^8.0.0",
+    "gulp-sass": "^4.0.2"
+  },
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.3",
+    "electron-store": "^5.1.1",
+    "iscroll": "^5.2.0",
+    "jquery": "^3.4.1",
+    "node-fetch": "^2.6.0",
+    "open": "^7.0.3"
+  },
+  "build": {
+    "productName": "GithubStatus",
+    "appId": "xyz.hduzplus.github_status",
+    "mac": {
+      "category": "public.app-category.developer-tools",
+      "target": "dmg"
+    }
+  }
+}

@@ -1,0 +1,39 @@
+@import './base.scss';
+@import './main.scss';
+@import './setting.scss';
+
+html {
+  font-family: PingFangSC-Regular, sans-serif;
+  background: #ececec;
+  width: 420px;
+  box-sizing: border-box;
+  overflow: hidden;
+  * {
+    cursor: default;
+  }
+  body {
+    position: relative;
+    transition: opacity .8s;
+    &.hidden {
+      opacity: 0;
+    }
+    &.f-setting-user {
+      .g-setting-user {
+        opacity: 1;
+        pointer-events: auto;
+      }
+    }
+    &.f-setting-token {
+      .g-setting-token {
+        opacity: 1;
+        pointer-events: auto;
+      }
+    }
+    &.f-is-loading {
+      .g-is-loading {
+        opacity: 1;
+        pointer-events: auto;
+      }
+    }
+  }
+}

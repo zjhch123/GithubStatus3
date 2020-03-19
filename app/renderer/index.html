@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Github Status 3</title>
+  <link rel="stylesheet" href="./css/style.css" />
+</head>
+<body>
+  <div class="g-main J_main hidden">
+    <div class="m-info m-grid">
+      <div class="u-header">
+        <img class="header J_userHeader J_openURL" src="./image/logo.png">
+        <div class="focus J_focus"></div>
+      </div>
+      <div class="u-info">
+        <div>
+          <span class="nickname J_nickname J_openURL">--</span>
+          <span class="username J_username">--</span>
+        </div>
+        <div class="sign J_profile_bio">--</div>
+        <div class="org J_organizations"></div>
+      </div>
+    </div>
+    <div class="m-subtitle J_today_color">
+      <div class="m-content">
+        <p class="J_today u-today">--</p>
+        <p>Today Commits</p>
+      </div>
+    </div>
+    <div class="m-daily m-grid">
+      <div class="m-container" id="J_IScroll">
+        <div class="u-graph J_daily">
+            Loading...
+        </div>
+      </div>
+    </div>
+    <div class="m-activity m-grid">
+      <h1>Contribution activities</h1>
+      <div class="m-list J_recentList">Loading...</div>
+    </div>
+    <div class="m-controllers">
+      <div class="m-left">
+        <img src="./image/github.png" class="u-item J_openURL J_github">
+      </div>
+      <div class="m-right">
+        <a href="javascript:;" class="u-refresh J_refresh">
+          <img src="./image/refresh.png" class="u-item">
+        </a>
+        <a href="javascript:;" class="u-setting J_setting">
+          <img src="./image/setting.png" class="u-item">
+        </a>
+        <a href="javascript:;" class="u-logout J_logout">
+          <img src="./image/logout.png" class="u-item">
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="g-setting g-is-loading">
+    <img src="./image/loading.png" class="u-loading" />
+  </div>
+  <div class="g-setting g-setting-user">
+    <form class="m-user J_user_form" autocapitalize="off" autocorrect="off" autocomplete="off">
+      <div class="m-input">
+        <label for="username" class="u-input-prefix">https://github.com/</label><input id="username" type="input" spellcheck="false" class="u-username J_username_input" name="username" placeholder="Github Username">
+      </div>
+      <input type="submit" class="u-btn u-submit" value="Sure">
+      <input type="button" class="u-btn u-cancel J_cancel" value="Cancel">
+    </form>
+  </div>
+  <script charset="utf-8">require('./js/index.js')</script>
+</body>
+</html>
