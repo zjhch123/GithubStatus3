@@ -27,6 +27,10 @@ const hideAll = () => {
 }
 
 const listen = () => {
+  $(window).on('load', () => {
+    launch()
+  })
+  
   $('.J_refresh').on('click', () => {
     launch()
   })

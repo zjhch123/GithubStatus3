@@ -1,22 +1,18 @@
-const { app, BrowserWindow, Tray, ipcMain, Notification } = require('electron')
+const { app, BrowserWindow, Tray } = require('electron')
 const path = require('path')
-const open = require('open')
-const appMenu = require('./app-menu')
-const request = require('./node/request')
+
+require('./app-menu')
+require('../node/listen')
 
 const isDev = process.env.NODE_ENV === 'development'
-
 if (isDev) {
   // hot reload
   require('electron-reload')(__dirname, {
-    electron: path.join(__dirname, '..', 'node_modules', '.bin', 'electron')
+    electron: path.join(__dirname, '..', '..', 'node_modules', '.bin', 'electron')
   })
 }
 
-app.dock.hide()
-appMenu(isDev)
-
-const renderDirectory = path.join(__dirname, 'render')
+const renderDirectory = path.join(__dirname, '../', 'renderer')
 
 let mainWindow = null
 let tray = null
@@ -85,6 +81,7 @@ function getWindowPosition () {
   return {x: x, y: y}
 }
 
+app.dock.hide()
 app.allowRendererProcessReuse = true
 
 app.whenReady().then(function () {
@@ -94,21 +91,4 @@ app.whenReady().then(function () {
 
 app.on('activate', function () {
   if (BrowserWindow.getAllWindows().length === 0) createWindow()
-})
-
-ipcMain.on('exit', () => {
-  app.exit(0)
-})
-
-ipcMain.on('openURL', (e, url) => {
-  open(url)
-})
-
-ipcMain.on('request', (e, requestParams) => {
-  request(requestParams)
-    .then(json => e.sender.send('request-success', json))
-    .catch((err) => {
-      console.log(err)
-      e.sender && e.sender.send('request-failed')
-    })
 })

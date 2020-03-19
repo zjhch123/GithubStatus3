@@ -14,9 +14,4 @@ const template = [{
   ]
 }]
 
-module.exports = function appMenu (isDev) {
-  if (!isDev) {
-    const menu = Menu.buildFromTemplate(template)
-    Menu.setApplicationMenu(menu)
-  }
-};
+Menu.setApplicationMenu(Menu.buildFromTemplate(template))

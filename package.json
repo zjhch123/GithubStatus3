@@ -2,7 +2,7 @@
   "name": "github-status-3",
   "version": "1.0.0",
   "description": "Get your github status",
-  "main": "app/main.js",
+  "main": "app/main/main.js",
   "scripts": {
     "dev": "NODE_ENV=development gulp dev",
     "start": "electron .",

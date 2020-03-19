@@ -7,10 +7,10 @@ const electron = require('electron')
 const proc = require('child_process')
 const path = require('path')
 
-const cssEntry = './app/render/css/*.css'
-const sassEntry = './app/render/scss/**/*.scss'
-const sassIndex = './app/render/scss/index.scss'
-const cssExportDirectory = './app/render/css/'
+const cssEntry = './app/renderer/css/*.css'
+const sassEntry = './app/renderer/scss/**/*.scss'
+const sassIndex = './app/renderer/scss/index.scss'
+const cssExportDirectory = './app/renderer/css/'
 const cssExportName = 'style.css'
 
 gulp.task('css', function() {
