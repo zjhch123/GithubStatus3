@@ -4,7 +4,7 @@ macOS APP，检查当日在github上提交代码的次数 - 这次是全新的Gi
 没错，我又重构了。
 
 ## 预览
-<img src="https://raw.githubusercontent.com/zjhch123/GithubStatus3/master/assets/preview.png" width="400"/>
+<img src="https://raw.githubusercontent.com/zjhch123/GithubStatus3/master/assets/preview.jpg" width="500"/>
 
 ### 老版本:
 * [GithubStatus2](https://github.com/zjhch123/GithubStatus2)
