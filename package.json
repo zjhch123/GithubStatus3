@@ -1,6 +1,6 @@
 {
   "name": "github-status-3",
-  "version": "4.0.1",
+  "version": "4.0.2",
   "description": "Get your github status",
   "main": "app/main/main.js",
   "scripts": {
