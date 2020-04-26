@@ -44,6 +44,10 @@ function createWindow () {
     e.sender.send('windowDidShow')
   })
 
+  mainWindow.on('hide', function (e) {
+    e.sender.send('windowWillHide')
+  })
+
   if (isDev) {
     mainWindow.webContents.openDevTools()
   }

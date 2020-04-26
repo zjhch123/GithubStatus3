@@ -26,6 +26,14 @@ const hideAll = () => {
   $('body').attr('class', '')
 }
 
+const showHTML = () => {
+  $('html').css('display', 'block')
+}
+
+const hideHTML = () => {
+  $('html').css('display', 'none')
+}
+
 const listen = () => {
   $(window).on('load', () => {
     launch()
@@ -67,8 +75,13 @@ const listen = () => {
   })
 
   ipcRenderer.on('windowDidShow', () => {
+    showHTML()
     hideAll()
     launch()
+  })
+
+  ipcRenderer.on('windowWillHide', () => {
+    hideHTML()
   })
 
   ipcRenderer.on('request-success', (e, json) => {
