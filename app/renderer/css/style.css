@@ -401,12 +401,27 @@ input:-moz-placeholder {
   -webkit-animation: loading 2s linear infinite;
           animation: loading 2s linear infinite; }
 
+@-webkit-keyframes show {
+  from {
+    opacity: 0; }
+  to {
+    opacity: 1; } }
+
+@keyframes show {
+  from {
+    opacity: 0; }
+  to {
+    opacity: 1; } }
+
 html {
+  display: none;
   font-family: PingFangSC-Regular, sans-serif;
   background: #ececec;
   width: 420px;
   box-sizing: border-box;
-  overflow: hidden; }
+  overflow: hidden;
+  -webkit-animation: show .8s linear;
+          animation: show .8s linear; }
   html * {
     cursor: default; }
   html body {
