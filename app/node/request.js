@@ -23,7 +23,7 @@ const convertUser = ($) => {
     status: {
       emojiHTML: $('.user-status-container').find('g-emoji').html()
     },
-    avatarUrl: $('.u-photo').eq(0).find('img.avatar').attr('src'),
+    avatarUrl: $('.avatar-user').attr('src'),
     organizations: {
       nodes: organizations
     }
@@ -75,7 +75,9 @@ const convertEvents = ($) => {
         url: `https://github.com${$item.find('a').eq(0).attr('href')}`,
       },
       contributions: {
-        totalCount: ~~($item.find('a').eq(1).text().trim().split(' ')[0])
+        totalCount: ~~($item.find('a').eq(1).text().trim().split(' ')[0]),
+        width: $item.find('.tooltipped').css('width'),
+        color: $item.find('.tooltipped .progress-bar').css('background-color'),
       }
     })
   }
