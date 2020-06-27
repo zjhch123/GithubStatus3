@@ -156,15 +156,14 @@ const renderContributions = ({ contributions }) => {
 
 const renderEvents = ({ events }) => {
   const { commitContributionsByRepository } = events
-  const totalCount = commitContributionsByRepository.reduce((prev, { contributions: { totalCount: count } }) => prev + count, 0)
 
-  const eventsTemplate = commitContributionsByRepository.map(({ repository: { name, url }, contributions: { totalCount: count } }) => `
+  const eventsTemplate = commitContributionsByRepository.map(({ repository: { name, url }, contributions: { totalCount, width, color } }) => `
     <div class="u-item">
       <div class="u-left">
         <span class="name J_openURL" data-href="${url}">${name}</span>
       </div>
-      <div class="u-right">
-        <span class="bar J_bar f-short" style="width: ${~~(count / totalCount * 92)}px; background-color: ${ count / totalCount > 0.5 ? '#7bc96f' : '#C6E48B' }"></span>
+      <div class="u-right" data-count="${totalCount}">
+        <span class="bar J_bar f-short" style="width: ${width}; background-color: ${color}"></span>
       </div>
     </div>
   `).slice(0, 5).join('')
@@ -184,7 +183,7 @@ const renderPage = ({ data }) => {
     showSetTargetUsername()
     return
   }
-
+  
   renderUser(user)
   renderContributions(user)
   renderEvents(user)

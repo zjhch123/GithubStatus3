@@ -178,7 +178,7 @@ input:-moz-placeholder {
     position: relative;
     transition: background-color .4s; }
     .g-main .m-subtitle:hover {
-      background-color: #196126 !important; }
+      background-color: #216e39 !important; }
       .g-main .m-subtitle:hover .u-today {
         -webkit-animation: jump 1s linear infinite;
                 animation: jump 1s linear infinite; }
@@ -401,27 +401,13 @@ input:-moz-placeholder {
   -webkit-animation: loading 2s linear infinite;
           animation: loading 2s linear infinite; }
 
-@-webkit-keyframes show {
-  from {
-    opacity: 0; }
-  to {
-    opacity: 1; } }
-
-@keyframes show {
-  from {
-    opacity: 0; }
-  to {
-    opacity: 1; } }
-
 html {
   display: none;
   font-family: PingFangSC-Regular, sans-serif;
   background: #ececec;
   width: 420px;
   box-sizing: border-box;
-  overflow: hidden;
-  -webkit-animation: show .8s linear;
-          animation: show .8s linear; }
+  overflow: hidden; }
   html * {
     cursor: default; }
   html body {
