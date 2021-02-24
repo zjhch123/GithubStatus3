@@ -157,16 +157,16 @@ const renderContributions = ({ contributions }) => {
 const renderEvents = ({ events }) => {
   const { commitContributionsByRepository } = events
 
-  const eventsTemplate = commitContributionsByRepository.map(({ repository: { name, url }, contributions: { totalCount, width, color } }) => `
+  const eventsTemplate = commitContributionsByRepository.map(({ repository: { name, url }, contributions: { width, color } }) => `
     <div class="u-item">
       <div class="u-left">
         <span class="name J_openURL" data-href="${url}">${name}</span>
       </div>
-      <div class="u-right" data-count="${totalCount}">
+      <div class="u-right">
         <span class="bar J_bar f-short" style="width: ${width}; background-color: ${color}"></span>
       </div>
     </div>
-  `).slice(0, 5).join('')
+  `).slice(0, 5).join('').trim() || '<div class="u-empty">Empty</div>'
 
   $('.J_recentList').html(eventsTemplate)
 
