@@ -2,6 +2,14 @@ const fetch = require('node-fetch')
 const cheerio = require('cheerio')
 const cache = require('./cache')
 
+const levelColorMapping = {
+  0: '#ebedf0',
+  1: '#9be9a8',
+  2: '#40c463',
+  3: '#30a14e',
+  4: '#216e39',
+}
+
 const convertUser = ($) => {
   const login = $('.p-nickname').eq(0).text()
   const $organizations = $('.avatar-group-item[data-hovercard-type="organization"]')
@@ -31,7 +39,7 @@ const convertUser = ($) => {
 }
 
 const convertContributions = ($) => {
-  const $calendar = $('.calendar-graph')
+  const $calendar = $('.js-calendar-graph')
 
   const $weeks = $calendar.find('svg > g').find('g')
   const weeks = []
@@ -45,8 +53,10 @@ const convertContributions = ($) => {
 
     for (let j = 0; j < $days.length; j += 1) {
       const $day = $days.eq(j)
+      const level = $day.attr('data-level')
+
       week.contributionDays.push({
-        color: $day.attr('fill'),
+        color: levelColorMapping[level],
         contributionCount: ~~($day.attr('data-count')),
         date: $day.attr('data-date'),
       })
@@ -63,7 +73,7 @@ const convertContributions = ($) => {
 }
 
 const convertEvents = ($) => {
-  const $container = $('.profile-rollup-wrapper.Details').eq(0)
+  const $container = $('.TimelineItem').eq(0)
   const $items = $container.find('li')
   const repositories = []
 
@@ -75,9 +85,8 @@ const convertEvents = ($) => {
         url: `https://github.com${$item.find('a').eq(0).attr('href')}`,
       },
       contributions: {
-        totalCount: ~~($item.find('a').eq(1).text().trim().split(' ')[0]),
-        width: $item.find('.tooltipped').css('width'),
-        color: $item.find('.tooltipped .progress-bar').css('background-color'),
+        width: $item.find('.Progress-item').css('width'),
+        color: $item.find('.Progress-item').css('background-color'),
       }
     })
   }
@@ -94,7 +103,7 @@ const convertData = (htmlData) => {
   const contributions = convertContributions($)
   const events = convertEvents($)
 
-  return {
+  const t = {
     data: {
       user: {
         ...user,
@@ -107,6 +116,8 @@ const convertData = (htmlData) => {
       }
     }
   }
+
+  return t
 }
 
 module.exports = function request ({ targetUsername }) {

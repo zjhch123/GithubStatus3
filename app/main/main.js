@@ -30,6 +30,7 @@ function createWindow () {
     focusable: true,
     backgroundColor: 'transparent',
     webPreferences: {
+      enableRemoteModule: true,
       nodeIntegration: true,
       backgroundThrottling: false,
       defaultEncoding: 'utf-8',

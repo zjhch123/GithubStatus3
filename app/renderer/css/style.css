@@ -279,6 +279,12 @@ input:-moz-placeholder {
             border-radius: 4px; }
             .g-main .m-activity .m-list .u-item .u-right .bar.f-short {
               width: 0 !important; }
+    .g-main .m-activity .u-empty {
+      font-weight: bolder;
+      color: rgba(0, 0, 0, 0.1);
+      text-align: center;
+      padding-top: 40px;
+      font-size: 24px; }
   .g-main .m-controllers {
     background-color: #F5F5F5;
     padding: 4px 6px;
